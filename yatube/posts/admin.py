@@ -2,6 +2,7 @@ from .models import Post, Group
 from django.contrib import admin
 # Register your models here.
 
+
 class PostAdmin (admin.ModelAdmin):
     list_display = ('pk', 'text', 'pub_date', 'author', 'group',)
     search_fields = ('text',)
@@ -9,10 +10,13 @@ class PostAdmin (admin.ModelAdmin):
     list_editable = ('group',)
     empty_value_display = '-пусто-'
 
-admin.site.register(Post, PostAdmin) 
+
+admin.site.register(Post, PostAdmin)
+
 
 class GroupAdmin (admin.ModelAdmin):
     list_display = ('pk', 'title', 'slug', 'description',)
     empty_value_display = 'пусто'
 
-admin.site.register(Group, GroupAdmin) 
+
+admin.site.register(Group, GroupAdmin)
