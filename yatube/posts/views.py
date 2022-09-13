@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-N_O_P = 10 #NUMBER_OF_POSTS
+N_O_P = 10 # NUMBER_OF_POSTS
+
 
 # Create your views here.
 def index(request):
