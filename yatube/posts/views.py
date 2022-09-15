@@ -2,13 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-N_O_P = 10  # NUMBER_OF_POSTS
+LIMITATION = 10
 
 
-# Create your views here.
 def index(request):
     template = 'posts/index.html'
-    posts = Post.objects.order_by('-pub_date')[:N_O_P]
+    posts = Post.objects.order_by('-pub_date')[:LIMITATION]
     title = 'Последние обновления на сайте'
     context = {'posts': posts,
                'title': title
@@ -18,7 +17,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:N_O_P]
+    posts = group.posts_of_group.all().order_by('-pub_date')[:LIMITATION]
     template = 'posts/group_list.html'
     title = f'Записи сообщества "{group}"'
     context = {'group': group,

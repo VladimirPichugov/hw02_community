@@ -17,7 +17,8 @@ class Post(models.Model):
     group = models.ForeignKey('Group',
                               on_delete=models.SET_NULL,
                               blank=True,
-                              null=True
+                              null=True,
+                              related_name='posts_of_group'
                               )
 
 
